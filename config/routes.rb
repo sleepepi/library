@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   resources :books do
     member do
       post :checkin
+    end
+
+    collection do
       post :checkout
     end
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

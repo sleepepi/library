@@ -23,8 +23,8 @@
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Check out', checkout_book_path(book), method: :post %></td>
-        <td><%= link_to 'Check in', checkin_book_path(book), method: :post %></td>
+        <td><%= link_to 'Check out', '#', data: { object: 'checkout', book_id: book.id } %></td>
+        <td><%= link_to 'Check in', checkin_book_path(book), method: :post, data: { confirm: 'Are you sure you want to checkin this book?'} %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,3 +33,28 @@
 <br>
 
 <%= link_to 'New Book', new_book_path, class: 'btn btn-primary' %>
+
+<!-- Modal -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag checkout_books_path, method: :post, id: 'checkout-form' do %>
+          <%= hidden_field_tag 'book_id' %>
+          <div class="field">
+            <label for="book_borrower">Borrower</label>
+            <%= text_field_tag 'borrower' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= link_to 'Checkout', '#', data: { object: 'perform-checkout' }, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

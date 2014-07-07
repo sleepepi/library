@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy, :checkin, :checkout]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :checkin]
 
 def checkin
   @book.update checkout_date: nil, available: true, borrower: nil
@@ -7,7 +7,8 @@ def checkin
 end
 
 def checkout
-  @book.update checkout_date: Time.now, available: false
+  @book = Book.find(params[:book_id])
+  @book.update checkout_date: Time.now, available: false, borrower: params[:borrower] unless params[:borrower].blank?
   redirect_to books_path
 end
 
