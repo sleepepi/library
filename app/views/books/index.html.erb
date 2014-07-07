@@ -3,27 +3,16 @@
 <table>
   <thead>
     <tr>
-      <th style="font-family:arial;color:green;">Name</th>
-      <th style="font-family:arial;color:green;">Author</th>
-      <th style="font-family:arial;color:green;">Borrower</th>
-      <th style="font-family:arial;color:green;">Available</th>
-      <th style="font-family:arial;color:green;">Checkout date</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Borrower</th>
+      <th>Available</th>
+      <th>Checkout date</th>
       <th colspan="5"></th>
     </tr>
   </thead>
 
   <tbody>
-    <style>
-        td
-        {
-          border-collapse:collapse;
-          border:1px solid black;
-        }
-        td
-        {
-          padding:10px;
-        }
-      </style>
     <% @books.each do |book| %>
       <tr>
         <td><%= book.name %></td>
