@@ -1,5 +1,16 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :checkin, :checkout]
+
+def checkin
+  @book.update checkout_date: nil, available: true, borrower: nil
+  redirect_to books_path
+end
+
+def checkout
+  @book.update checkout_date: Time.now, available: false
+  redirect_to books_path
+end
+
 
   # GET /books
   # GET /books.json
