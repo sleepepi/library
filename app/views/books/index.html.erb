@@ -1,20 +1,26 @@
 <h1 style="color:blue;">Listing books</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>Available</th>
       <th>Name</th>
       <th>Author</th>
       <th>Borrower</th>
       <th>Available</th>
       <th>Checkout date</th>
-      <th colspan="5"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @books.each do |book| %>
       <tr>
+        <td>
+          <% if book.available? %>
+            <span class="glyphicon glyphicon-barcode"></span>
+          <% end %>
+        </td>
         <td><%= book.name %></td>
         <td><%= book.author %></td>
         <td><%= book.borrower %></td>
@@ -23,8 +29,13 @@
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Check out', '#', data: { object: 'checkout', book_id: book.id } %></td>
-        <td><%= link_to 'Check in', checkin_book_path(book), method: :post, data: { confirm: 'Are you sure you want to checkin this book?'} %></td>
+        <td>
+          <% if book.available? %>
+            <%=link_to 'Check out', '#', data: { object: 'checkout', book_id: book.id } %>
+          <% else %>
+            <%=link_to 'Check in', checkin_book_path(book), method: :post, data: { confirm: 'Are you sure you want to checkin this book?'} %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
