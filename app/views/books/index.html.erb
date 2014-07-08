@@ -8,7 +8,6 @@
       <th>Author</th>
       <th>Borrower</th>
       <th>Genre</th>
-      <th>Available</th>
       <th>Checkout date</th>
       <th colspan="4"></th>
     </tr>
@@ -26,7 +25,6 @@
         <td><%= book.author %></td>
         <td><%= book.borrower %></td>
         <td><%= book.genre %></td>
-        <td><%= book.available %></td>
         <td><%= book.checkout_date %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
