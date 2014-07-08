@@ -18,8 +18,18 @@ class BooksControllerTest < ActionController::TestCase
 
   test "should create book" do
     assert_difference('Book.count') do
-      post :create, book: { author: @book.author, available: @book.available, borrower: @book.borrower, checkout_date: @book.checkout_date, name: @book.name }
+      post :create, book: { author: @book.author, available: @book.available, borrower: @book.borrower, checkout_date: @book.checkout_date, name: @book.name, genre: @book.genre}
     end
+
+    assert_redirected_to book_path(assigns(:book))
+  end
+
+  test "should create book with genre" do
+    assert_difference('Book.count') do
+      post :create, book: { author: @book.author, name: @book.name, genre: "fiction"}
+    end
+
+    assert_equal "fiction", assigns(:book).genre
 
     assert_redirected_to book_path(assigns(:book))
   end
@@ -35,7 +45,7 @@ class BooksControllerTest < ActionController::TestCase
   end
 
   test "should update book" do
-    patch :update, id: @book, book: { author: @book.author, available: @book.available, borrower: @book.borrower, checkout_date: @book.checkout_date, name: @book.name }
+    patch :update, id: @book, book: { author: @book.author, available: @book.available, borrower: @book.borrower, checkout_date: @book.checkout_date, name: @book.name, genre: @book.genre }
     assert_redirected_to book_path(assigns(:book))
   end
 

@@ -3,6 +3,7 @@
 ### Enhancements
 - Added version page to library application
 - Timezone is now specified on application level
+- Added a genre section for the books
 
 ### Bug Fix
 - Fixed a bug that prevented glyphicons from displaying properly in production environment
