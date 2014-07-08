@@ -1,6 +1,7 @@
 ## 0.2.0
 
 ### Enhancements
+- Added version page to library application
 
 ### Bug Fix
 - Fixed a bug that prevented glyphicons from displaying properly in production environment
