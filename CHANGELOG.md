@@ -1,4 +1,4 @@
-## 0.1.0
+## 0.1.0 (July 8, 2014)
 
 - Initial book checkout framework
 - Updated the book editing forms to use Bootstrap styling
