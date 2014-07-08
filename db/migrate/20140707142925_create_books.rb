@@ -8,6 +8,7 @@ class CreateBooks < ActiveRecord::Migration
       t.datetime :checkout_date
 
       t.timestamps
+
     end
   end
 end

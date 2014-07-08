@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   get '/version' => 'welcome#version', as: :version
+  get '/dummytable' => 'welcome#dummytable', as: :dummytable
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
