@@ -8,7 +8,7 @@ end
 
 def checkout
   @book = Book.find(params[:book_id])
-  @book.update checkout_date: Time.now, available: false, borrower: params[:borrower] unless params[:borrower].blank?
+  @book.update checkout_date: Time.now.in_time_zone("Eastern Time (US & Canada)"), available: false, borrower: params[:borrower] unless params[:borrower].blank?
   redirect_to books_path
 end
 

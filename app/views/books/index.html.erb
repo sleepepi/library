@@ -33,7 +33,7 @@
           <% if book.available? %>
             <%=link_to 'Check out', '#', data: { object: 'checkout', book_id: book.id } %>
           <% else %>
-            <%=link_to 'Check in', checkin_book_path(book), method: :post, data: { confirm: 'Are you sure you want to checkin this book?'} %>
+            <%=link_to 'Check-in', checkin_book_path(book), method: :post, data: { confirm: 'Are you sure you want to check-in this book?'} %>
           <% end %>
         </td>
       </tr>
@@ -51,7 +51,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Book Checkout</h4>
       </div>
       <div class="modal-body">
         <%= form_tag checkout_books_path, method: :post, id: 'checkout-form' do %>
