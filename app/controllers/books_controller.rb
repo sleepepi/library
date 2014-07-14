@@ -1,16 +1,19 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :checkin]
 
-def checkin
-  @book.update checkout_date: nil, available: true, borrower: nil
-  redirect_to books_path
-end
+  def checkin
+    @book.update checkout_date: nil, available: true, borrower: nil
+    redirect_to books_path
+  end
 
-def checkout
-  @book = Book.find(params[:book_id])
-  @book.update checkout_date: Time.now, available: false, borrower: params[:borrower] unless params[:borrower].blank?
-  redirect_to books_path
-end
+  def checkout
+    @book = Book.find(params[:book_id])
+    unless params[:borrower].blank?
+      @book.update checkout_date: Time.now, available: false, borrower: params[:borrower]
+      @book.borrowers.create( name: params[:borrower], date_borrowed: Time.now )
+    end
+    redirect_to books_path
+  end
 
 
   # GET /books

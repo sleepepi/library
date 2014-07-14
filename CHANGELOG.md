@@ -6,6 +6,7 @@
 - Added a genre section for the books
 - Added ability to search for anything, such as books or authors
 - Columns are alphabetical and order can be changed by user
+- Added the ability to track and see all previous borrowers for a book
 
 ### Bug Fix
 - Fixed a bug that prevented glyphicons from displaying properly in production environment
