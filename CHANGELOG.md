@@ -10,6 +10,7 @@
 
 ### Bug Fix
 - Fixed a bug that prevented glyphicons from displaying properly in production environment
+- Fixed a bug that prevented the books table from being sortable on certain page transitions
 
 
 ## 0.1.0 (July 8, 2014)
